@@ -18,9 +18,9 @@ import torch
 import torch.nn as nn
 from torch import Tensor
 
-from squeezeformer.attention import MultiHeadedSelfAttentionModule
-from squeezeformer.convolution import ConvModule, DepthwiseConv2dSubsampling, TimeReductionLayer
-from squeezeformer.modules import FeedForwardModule, ResidualConnectionModule, recover_resolution
+from attention import MultiHeadedSelfAttentionModule
+from convolution import ConvModule, DepthwiseConv2dSubsampling, TimeReductionLayer
+from modules import FeedForwardModule, ResidualConnectionModule, recover_resolution
 
 
 class SqueezeformerEncoder(nn.Module):

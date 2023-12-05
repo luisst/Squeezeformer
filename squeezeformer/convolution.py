@@ -13,12 +13,12 @@
 # limitations under the License.
 
 from typing import Tuple, Union
-
+import torch
 import torch.nn as nn
 from torch import Tensor
 
-from squeezeformer.activation import GLU, Swish
-from squeezeformer.modules import Transpose
+from activation import GLU, Swish
+from modules import Transpose
 
 
 class DepthwiseConv2dSubsampling(nn.Module):
@@ -52,6 +52,7 @@ class DepthwiseConv2dSubsampling(nn.Module):
         outputs = outputs.permute(0, 2, 1, 3)
         outputs = outputs.contiguous().view(batch_size, subsampled_lengths, channels * subsampled_dim)
 
+        input_lengths = input_lengths.type(torch.int64)
         output_lengths = input_lengths >> 2
         output_lengths -= 1
 
@@ -206,7 +207,7 @@ class ConvModule(nn.Module):
     ) -> None:
         super(ConvModule, self).__init__()
         assert (kernel_size - 1) % 2 == 0, "kernel_size should be a odd number for 'SAME' padding"
-        assert expansion_factor == 2, "Currently, Only Supports expansion_factor 2"
+        assert expansion_factor == 2, "Currently, Only Supports expansion_factor 2 -> DUE TO Glu"
 
         self.sequential = nn.Sequential(
             Transpose(shape=(1, 2)),

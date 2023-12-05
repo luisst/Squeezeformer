@@ -18,7 +18,7 @@ import torch
 import torch.nn as nn
 from torch import Tensor
 
-from squeezeformer.activation import Swish
+from activation import Swish
 
 
 class FeedForwardModule(nn.Module):

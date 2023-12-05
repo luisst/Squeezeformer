@@ -19,7 +19,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import Tensor
 
-from squeezeformer.encoder import SqueezeformerEncoder
+from encoder import SqueezeformerEncoder
 
 
 class Squeezeformer(nn.Module):

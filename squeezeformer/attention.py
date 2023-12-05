@@ -20,7 +20,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import Tensor
 
-from squeezeformer.modules import RelPositionalEncoding
+from modules import RelPositionalEncoding
 
 
 class RelativeMultiHeadAttention(nn.Module):
